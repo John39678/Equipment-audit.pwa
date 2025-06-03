@@ -15,6 +15,7 @@ body {
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 h1 {
+  <img src="fedex-logo.png" alt="FedEx Logo" width="150" />
   display: flex;
   align-items: center;
   gap: 10px;
