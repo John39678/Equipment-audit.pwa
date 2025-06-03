@@ -2,39 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Outbound Equipment Audit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
+  <title>Outbound Equipment Audit</title>
 </head>
 <body>
-  <h1>Outbound Equipment Audit</h1>
+  <div class="container">
+    <h1>Outbound Equipment Audit</h1>
 
-  <section>
-    <h2>Radios</h2>
-    <form>
-      <!-- 15 entries -->
-      <input type="text" placeholder="Enter radio serial number" maxlength="12" />
-      <input type="text" placeholder="Enter radio serial number" maxlength="12" />
-      <!-- Add more as needed -->
+    <h2>Radio Serial Numbers</h2>
+    <form id="auditForm">
+      <div class="section">
+        <!-- Radio Fields -->
+        <input type="text" placeholder="Radio Serial #1" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #2" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #3" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #4" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #5" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #6" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #7" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #8" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #9" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #10" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #11" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #12" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #13" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #14" maxlength="12" />
+        <input type="text" placeholder="Radio Serial #15" maxlength="12" />
+      </div>
+
+      <h2>Panasonic Scanners</h2>
+      <div class="section">
+        <!-- Panasonic Fields -->
+        <input type="text" placeholder="Panasonic Serial #1" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #2" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #3" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #4" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #5" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #6" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #7" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #8" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #9" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #10" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #11" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #12" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #13" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #14" maxlength="12" />
+        <input type="text" placeholder="Panasonic Serial #15" maxlength="12" />
+      </div>
+
+      <h2>Zebra Scanners</h2>
+      <div class="section">
+        <!-- Zebra Fields -->
+        <!-- Copy these lines 5x to make 20 -->
+        <input type="text" placeholder="Zebra Serial #1" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #2" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #3" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #4" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #5" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #6" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #7" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #8" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #9" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #10" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #11" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #12" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #13" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #14" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #15" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #16" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #17" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #18" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #19" maxlength="12" />
+        <input type="text" placeholder="Zebra Serial #20" maxlength="12" />
+      </div>
+
+      <h2>Finger Scanners</h2>
+      <div class="section">
+        <!-- Finger Fields -->
+        <input type="text" placeholder="Finger Scanner Serial #1" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #2" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #3" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #4" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #5" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #6" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #7" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #8" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #9" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #10" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #11" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #12" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #13" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #14" maxlength="12" />
+        <input type="text" placeholder="Finger Scanner Serial #15" maxlength="12" />
+      </div>
+
+      <button type="submit">Save</button>
     </form>
-  </section>
-
-  <section>
-    <h2>Radio Batteries OH</h2>
-    <input type="text" placeholder="Enter battery count or notes" />
-  </section>
-
-  <section>
-    <h2>Panasonic Scanners</h2>
-    <form>
-      <!-- 15 entries -->
-      <input type="text" placeholder="Enter scanner serial number" maxlength="12" />
-      <input type="text" placeholder="Enter scanner serial number" maxlength="12" />
-      <!-- Add more as needed -->
-    </form>
-  </section>
-
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
