@@ -2,107 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <title>Outbound Equipment Audit</title>
+  <script defer src="app.js"></script>
+  <title>Equipment Audit</title>
 </head>
 <body>
+  <div class="background-logo"></div>
   <div class="container">
     <h1>Outbound Equipment Audit</h1>
 
-    <h2>Radios</h2>
     <form id="auditForm">
-      <button type="button" onclick="generatePDF()">Download PDF</button>
-      <div class="section">
-        <!-- Radio Fields -->
-        <input type="text" placeholder="Radio Serial #1" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #2" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #3" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #4" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #5" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #6" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #7" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #8" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #9" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #10" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #11" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #12" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #13" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #14" maxlength="12" />
-        <input type="text" placeholder="Radio Serial #15" maxlength="12" />
+      <h2>Radios</h2>
+      <div id="radios">
+        <!-- 15 Radio serial inputs -->
+        <script>
+          for (let i = 0; i < 15; i++) {
+            document.write('<input type="text" placeholder="Radio Serial #" maxlength="12" />');
+          }
+        </script>
       </div>
 
-      <h2>Panasonic Scanners</h2>
-      <div class="section">
-        <!-- Panasonic Fields -->
-        <input type="text" placeholder="Panasonic Serial #1" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #2" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #3" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #4" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #5" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #6" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #7" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #8" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #9" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #10" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #11" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #12" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #13" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #14" maxlength="12" />
-        <input type="text" placeholder="Panasonic Serial #15" maxlength="12" />
+      <h2>Panasonics</h2>
+      <div id="panasonics">
+        <!-- 15 Panasonic scanner inputs -->
+        <script>
+          for (let i = 0; i < 15; i++) {
+            document.write('<input type="text" placeholder="Panasonic Scanner #" maxlength="12" />');
+          }
+        </script>
       </div>
 
       <h2>Zebra Scanners</h2>
-      <div class="section">
-        <!-- Zebra Fields -->
-        <!-- Copy these lines 5x to make 20 -->
-        <input type="text" placeholder="Zebra Serial #1" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #2" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #3" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #4" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #5" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #6" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #7" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #8" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #9" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #10" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #11" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #12" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #13" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #14" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #15" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #16" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #17" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #18" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #19" maxlength="12" />
-        <input type="text" placeholder="Zebra Serial #20" maxlength="12" />
+      <div id="zebras">
+        <!-- 20 Zebra inputs -->
+        <script>
+          for (let i = 0; i < 20; i++) {
+            document.write('<input type="text" placeholder="Zebra Scanner #" maxlength="12" />');
+          }
+        </script>
       </div>
 
       <h2>Finger Scanners</h2>
-      <div class="section">
-        <!-- Finger Fields -->
-        <input type="text" placeholder="Finger Scanner Serial #1" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #2" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #3" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #4" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #5" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #6" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #7" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #8" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #9" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #10" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #11" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #12" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #13" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #14" maxlength="12" />
-        <input type="text" placeholder="Finger Scanner Serial #15" maxlength="12" />
+      <div id="fingers">
+        <!-- 15 Finger scanner inputs -->
+        <script>
+          for (let i = 0; i < 15; i++) {
+            document.write('<input type="text" placeholder="Finger Scanner #" maxlength="12" />');
+          }
+        </script>
       </div>
 
-      <button type="submit">Save</button>
+      <button type="submit">Save to Local</button>
+      <button type="button" onclick="generatePDF()">Download PDF</button>
+      <button type="button" onclick="loadFromLocal()">Load Saved</button>
     </form>
   </div>
-  <script src="app.js"></script>
 </body>
 </html>
