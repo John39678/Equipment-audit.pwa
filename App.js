@@ -1,5 +1,4 @@
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-    .then(() => console.log('Service Worker Registered'))
-    .catch(err => console.log('Service Worker Failed', err));
-}
+document.getElementById('auditForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert("Form submitted!");
+});
