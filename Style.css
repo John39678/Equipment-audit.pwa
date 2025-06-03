@@ -1,27 +1,29 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #4d148c;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+.container {
   padding: 20px;
 }
-
-h1 {
-  text-align: center;
-  color: #ff6600;
-}
-
-h2 {
-  margin-top: 30px;
+h1, h2 {
   color: #4d148c;
 }
-
+.section {
+  margin-bottom: 20px;
+}
 input {
   display: block;
+  margin: 5px 0;
   width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 8px 0;
+  padding: 8px;
+}
+button {
+  background: #4d148c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  cursor: pointer;
 }
