@@ -2,42 +2,61 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #4d148c, #ff6600);
-  color: #fff;
+  background: #f4f4f4;
+  position: relative;
+  min-height: 100vh;
 }
+
+.background-logo {
+  background: url("fedex-logo.png") no-repeat center center;
+  background-size: 300px;
+  opacity: 0.05;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
 .container {
-  padding: 20px;
+  position: relative;
+  z-index: 1;
+  background: white;
   max-width: 800px;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.95);
-  color: #333;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
-h1 {
-  <img src="fedex-logo.png" alt="FedEx Logo" width="150" />
-  display: flex;
-  align-items: center;
-  gap: 10px;
+
+h1, h2 {
   color: #4d148c;
+  margin-top: 20px;
 }
-h2 {
-  color: #4d148c;
-}
+
 input {
   display: block;
-  margin: 5px 0;
   width: 100%;
-  padding: 8px;
+  margin: 5px 0 12px;
+  padding: 10px;
   border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
 }
+
 button {
   background: #4d148c;
   color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   margin: 10px 5px 0 0;
   border-radius: 5px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff6600;
 }
