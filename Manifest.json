@@ -1,13 +1,21 @@
 {
-  "name": "Outbound Equipment Audit",
+  "name": "FedEx Equipment Audit",
   "short_name": "AuditApp",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "description": "Equipment audit PWA for field use",
-  "icons": [{
-    "src": "icon.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }]
+  "background_color": "#4d148c",
+  "theme_color": "#4d148c",
+  "description": "Offline Equipment Audit for Radios, Scanners, Batteries",
+  "icons": [
+    {
+      "src": "fedex-logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "fedex-logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }
