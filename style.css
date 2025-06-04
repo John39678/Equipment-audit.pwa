@@ -1,51 +1,56 @@
-/* Paste this into style.css */
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f4 url('fedex-logo.png') no-repeat center 40px;
-  background-size: 200px;
-  padding-top: 200px;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  color: #000;
 }
+
 .container {
-  max-width: 600px;
-  margin: auto;
-  background: white;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: auto;
 }
+
 .logo {
-  display: none;
+  max-width: 200px;
+  display: block;
+  margin: 0 auto 20px;
 }
+
+.section {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
 h1 {
   text-align: center;
   color: #4d148c;
 }
-.section {
-  margin-bottom: 20px;
+
+h2 {
+  color: #ff6600;
 }
-.input-group {
-  display: flex;
-  gap: 10px;
-}
+
 input {
-  flex: 1;
-  padding: 8px;
+  width: 70%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #aaa;
 }
+
 button {
-  padding: 8px 10px;
-  background-color: #ff6600;
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: #4d148c;
   color: white;
   border: none;
   cursor: pointer;
 }
+
 ul {
-  margin-top: 10px;
-  list-style: none;
-  padding: 0;
-}
-ul li {
-  background: #eee;
-  padding: 5px;
-  margin: 3px 0;
-  border-radius: 4px;
+  list-style-type: decimal;
+  padding-left: 20px;
 }
