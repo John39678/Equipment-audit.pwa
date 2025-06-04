@@ -1,57 +1,56 @@
-const categories = ['radio', 'panasonic', 'zebra', 'finger'];
-
-window.onload = () => {
-  categories.forEach(cat => {
-    loadList(cat);
-    const input = document.getElementById(`${cat}Input`);
-    input.addEventListener("keypress", e => {
-      if (e.key === "Enter") addSerial(cat);
-    });
-  });
+const fields = {
+  "radio": 15,
+  "panasonic": 15,
+  "zebra": 20,
+  "finger": 15
 };
 
-function addSerial(category) {
-  const input = document.getElementById(`${category}Input`);
-  const value = input.value.trim();
-  if (value === "") return;
+window.onload = function () {
+  for (const [key, count] of Object.entries(fields)) {
+    const group = document.getElementById(key + "-group");
+    for (let i = 0; i < count; i++) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "input-row";
 
-  let data = JSON.parse(localStorage.getItem(category)) || [];
-  data.push(value);
-  localStorage.setItem(category, JSON.stringify(data));
-  input.value = "";
-  loadList(category);
-}
+      const input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = key.charAt(0).toUpperCase() + key.slice(1) + " Serial";
+      input.dataset.key = key;
+      input.dataset.index = i;
 
-function loadList(category) {
-  const list = document.getElementById(`${category}List`);
-  list.innerHTML = "";
-  const data = JSON.parse(localStorage.getItem(category)) || [];
-  data.forEach(serial => {
-    const li = document.createElement("li");
-    li.textContent = serial;
-    list.appendChild(li);
-  });
-}
+      input.value = localStorage.getItem(key + "-" + i) || "";
 
-function clearAll() {
-  categories.forEach(cat => {
-    localStorage.removeItem(cat);
-    loadList(cat);
+      input.onchange = () => {
+        localStorage.setItem(key + "-" + i, input.value);
+      };
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = "Scan";
+      button.onclick = () => scanBarcode(input);
+
+      wrapper.appendChild(input);
+      wrapper.appendChild(button);
+      group.appendChild(wrapper);
+    }
+  }
+};
+
+function scanBarcode(inputEl) {
+  const codeReader = new ZXing.BrowserBarcodeReader();
+  const previewElem = document.getElementById("scanner-preview");
+  previewElem.style.display = "block";
+  codeReader.decodeOnceFromVideoDevice(undefined, "scanner-preview").then(result => {
+    inputEl.value = result.text;
+    localStorage.setItem(inputEl.dataset.key + "-" + inputEl.dataset.index, result.text);
+    codeReader.reset();
+    previewElem.style.display = "none";
+  }).catch(err => {
+    console.error(err);
+    previewElem.style.display = "none";
   });
 }
 
 function exportPDF() {
-  const win = window.open('', '', 'width=800,height=900');
-  win.document.write('<html><head><title>Audit PDF</title></head><body>');
-  win.document.write('<h1>Outbound Equipment Audit</h1>');
-  categories.forEach(cat => {
-    const title = cat.charAt(0).toUpperCase() + cat.slice(1) + 's';
-    const data = JSON.parse(localStorage.getItem(cat)) || [];
-    win.document.write(`<h2>${title}</h2><ol>`);
-    data.forEach(s => win.document.write(`<li>${s}</li>`));
-    win.document.write('</ol>');
-  });
-  win.document.write('</body></html>');
-  win.document.close();
-  win.print();
+  window.print();
 }
