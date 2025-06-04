@@ -26,7 +26,7 @@ function loadList(category) {
   const list = document.getElementById(`${category}List`);
   list.innerHTML = "";
   const data = JSON.parse(localStorage.getItem(category)) || [];
-  data.forEach((serial, i) => {
+  data.forEach(serial => {
     const li = document.createElement("li");
     li.textContent = serial;
     list.appendChild(li);
