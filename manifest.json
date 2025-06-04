@@ -1,10 +1,11 @@
+// Paste this into manifest.json
 {
   "name": "FedEx Equipment Audit",
-  "short_name": "Audit",
-  "start_url": ".",
+  "short_name": "AuditApp",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "description": "Offline Equipment Audit for FedEx Teams",
+  "theme_color": "#4d148c",
   "icons": [
     {
       "src": "fedex-logo.png",
