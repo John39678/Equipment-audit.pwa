@@ -8,6 +8,8 @@ window.onload = () => {
       if (e.key === "Enter") addSerial(cat);
     });
   });
+
+  loadBattery();
 };
 
 function addSerial(category) {
@@ -33,11 +35,27 @@ function loadList(category) {
   });
 }
 
+function addBattery() {
+  const input = document.getElementById("batteryInput");
+  const value = input.value.trim();
+  if (!value || isNaN(value) || value.length > 2) return;
+  localStorage.setItem("batteries", value);
+  input.value = "";
+  loadBattery();
+}
+
+function loadBattery() {
+  const val = localStorage.getItem("batteries") || "";
+  document.getElementById("batteryDisplay").textContent = val ? `Batteries On Hand: ${val}` : "";
+}
+
 function clearAll() {
   categories.forEach(cat => {
     localStorage.removeItem(cat);
     loadList(cat);
   });
+  localStorage.removeItem("batteries");
+  loadBattery();
 }
 
 function exportPDF() {
@@ -51,6 +69,12 @@ function exportPDF() {
     data.forEach(s => win.document.write(`<li>${s}</li>`));
     win.document.write('</ol>');
   });
+
+  const batteryVal = localStorage.getItem("batteries") || "";
+  if (batteryVal) {
+    win.document.write(`<h2>Radio Batteries On Hand</h2><p>${batteryVal}</p>`);
+  }
+
   win.document.write('</body></html>');
   win.document.close();
   win.print();
