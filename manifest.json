@@ -1,0 +1,16 @@
+{
+  "name": "Outbound Equipment Audit",
+  "short_name": "AuditApp",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4d148c",
+  "description": "Offline-capable FedEx Equipment Audit App",
+  "icons": [
+    {
+      "src": "fedex-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
