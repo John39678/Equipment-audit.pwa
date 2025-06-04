@@ -6,69 +6,44 @@
   <title>Outbound Equipment Audit</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="fedex-logo.png" />
 </head>
 <body>
-  <header>
+  <div class="container">
     <img src="fedex-logo.png" alt="FedEx Logo" class="logo" />
     <h1>Outbound Equipment Audit</h1>
-  </header>
 
-  <form id="auditForm">
-    <h2>Radios</h2>
-    <div id="radios">
-      <!-- Paste this 15x for radios -->
-      <div class="field-entry">
-        <input type="text" placeholder="Radios Serial #" maxlength="12" />
-        <button type="button" class="scan-btn">📷</button>
-      </div>
+    <div class="section" id="radios">
+      <h2>Radios</h2>
+      <input type="text" id="radioInput" placeholder="Enter Radio Serial" />
+      <button onclick="addSerial('radio')">Add</button>
+      <ul id="radioList"></ul>
     </div>
 
-    <h2>Panasonics</h2>
-    <div id="panasonics">
-      <!-- Paste this 15x for Panasonics -->
-      <div class="field-entry">
-        <input type="text" placeholder="Panasonics Serial #" maxlength="12" />
-        <button type="button" class="scan-btn">📷</button>
-      </div>
+    <div class="section" id="panasonics">
+      <h2>Panasonic Scanners</h2>
+      <input type="text" id="panasonicInput" placeholder="Enter Panasonic Serial" />
+      <button onclick="addSerial('panasonic')">Add</button>
+      <ul id="panasonicList"></ul>
     </div>
 
-    <h2>Zebra Scanners</h2>
-    <div id="zebra_scanners">
-      <!-- Paste this 20x for Zebra -->
-      <div class="field-entry">
-        <input type="text" placeholder="Zebra Scanners Serial #" maxlength="12" />
-        <button type="button" class="scan-btn">📷</button>
-      </div>
+    <div class="section" id="zebras">
+      <h2>Zebra Scanners</h2>
+      <input type="text" id="zebraInput" placeholder="Enter Zebra Serial" />
+      <button onclick="addSerial('zebra')">Add</button>
+      <ul id="zebraList"></ul>
     </div>
 
-    <h2>Finger Scanners</h2>
-    <div id="finger_scanners">
-      <!-- Paste this 15x for Fingers -->
-      <div class="field-entry">
-        <input type="text" placeholder="Finger Scanners Serial #" maxlength="12" />
-        <button type="button" class="scan-btn">📷</button>
-      </div>
+    <div class="section" id="fingers">
+      <h2>Finger Scanners</h2>
+      <input type="text" id="fingerInput" placeholder="Enter Finger Serial" />
+      <button onclick="addSerial('finger')">Add</button>
+      <ul id="fingerList"></ul>
     </div>
 
-    <button type="button" id="exportBtn">Export to PDF</button>
-  </form>
-
-  <div id="scanner-container" style="display:none;">
-    <video id="scanner" autoplay></video>
-    <button id="close-scanner">Close Scanner</button>
+    <button onclick="exportPDF()">Export to PDF</button>
+    <button onclick="clearAll()">Clear All</button>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
   <script src="script.js"></script>
-
-  <!-- ✅ Service Worker is registered right here -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log("Service Worker Registered"))
-        .catch(err => console.error("SW registration failed:", err));
-    }
-  </script>
 </body>
 </html>
