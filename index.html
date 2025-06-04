@@ -40,6 +40,13 @@
       <ul id="fingerList"></ul>
     </div>
 
+    <div class="section" id="batteries">
+      <h2>Radio Batteries On Hand</h2>
+      <input type="number" id="batteryInput" placeholder="Enter Quantity (e.g. 12)" maxlength="2" />
+      <button onclick="addBattery()">Add</button>
+      <p id="batteryDisplay"></p>
+    </div>
+
     <button onclick="exportPDF()">Export to PDF</button>
     <button onclick="clearAll()">Clear All</button>
   </div>
