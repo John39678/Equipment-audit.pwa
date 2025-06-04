@@ -1,70 +1,54 @@
-<!-- Paste this into index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outbound Equipment Audit</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
-  <title>Equipment Audit</title>
 </head>
 <body>
   <div class="container">
-    <img src="fedex-logo.png" class="logo" alt="FedEx Logo" />
+    <img src="fedex-logo.png" alt="FedEx Logo" class="logo" />
     <h1>Outbound Equipment Audit</h1>
 
-    <div class="section">
-      <label>Radio Serial Number</label>
-      <div class="input-group">
-        <input type="text" id="radioInput" maxlength="12" placeholder="Enter Radio Serial Number" />
-        <button onclick="scanCode('radioInput')">Scan</button>
-        <button onclick="addEntry('radio')">Add</button>
-      </div>
+    <div class="section" id="radios">
+      <h2>Radios</h2>
+      <input type="text" id="radioInput" placeholder="Enter Radio Serial" />
+      <button onclick="addSerial('radio')">Add</button>
       <ul id="radioList"></ul>
     </div>
 
-    <div class="section">
-      <label>Panasonic Serial Number</label>
-      <div class="input-group">
-        <input type="text" id="panasonicInput" maxlength="12" placeholder="Enter Panasonic Serial Number" />
-        <button onclick="scanCode('panasonicInput')">Scan</button>
-        <button onclick="addEntry('panasonic')">Add</button>
-      </div>
+    <div class="section" id="panasonics">
+      <h2>Panasonic Scanners</h2>
+      <input type="text" id="panasonicInput" placeholder="Enter Panasonic Serial" />
+      <button onclick="addSerial('panasonic')">Add</button>
       <ul id="panasonicList"></ul>
     </div>
 
-    <div class="section">
-      <label>Zebra Scanner Serial Number</label>
-      <div class="input-group">
-        <input type="text" id="zebraInput" maxlength="12" placeholder="Enter Zebra Serial Number" />
-        <button onclick="scanCode('zebraInput')">Scan</button>
-        <button onclick="addEntry('zebra')">Add</button>
-      </div>
+    <div class="section" id="zebras">
+      <h2>Zebra Scanners</h2>
+      <input type="text" id="zebraInput" placeholder="Enter Zebra Serial" />
+      <button onclick="addSerial('zebra')">Add</button>
       <ul id="zebraList"></ul>
     </div>
 
-    <div class="section">
-      <label>Finger Scanner Serial Number</label>
-      <div class="input-group">
-        <input type="text" id="fingerInput" maxlength="12" placeholder="Enter Finger Serial Number" />
-        <button onclick="scanCode('fingerInput')">Scan</button>
-        <button onclick="addEntry('finger')">Add</button>
-      </div>
+    <div class="section" id="fingers">
+      <h2>Finger Scanners</h2>
+      <input type="text" id="fingerInput" placeholder="Enter Finger Serial" />
+      <button onclick="addSerial('finger')">Add</button>
       <ul id="fingerList"></ul>
     </div>
 
-    <div class="section">
-      <label>Radio Batteries On Hand</label>
-      <div class="input-group">
-        <input type="number" id="batteryCount" maxlength="2" placeholder="Enter Battery Count" />
-        <button onclick="saveBatteryCount()">Add</button>
-      </div>
-      <p id="batteryDisplay"></p>
-    </div>
-
-    <button onclick="exportPDF()">Export PDF</button>
+    <button onclick="exportPDF()">Export to PDF</button>
+    <button onclick="clearAll()">Clear All</button>
   </div>
 
-  <script src="app.js"></script>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
 </body>
 </html>
