@@ -1,9 +1,9 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #ffffff;
+  font-family: sans-serif;
+  background-color: #f6f6f6;
+  color: #333;
   margin: 0;
   padding: 0;
-  color: #000;
 }
 
 .container {
@@ -13,44 +13,39 @@ body {
 }
 
 .logo {
-  max-width: 200px;
-  display: block;
-  margin: 0 auto 20px;
+  width: 150px;
+  margin-bottom: 20px;
 }
 
-.section {
-  margin-bottom: 30px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 20px;
+h1, h2 {
+  color: #4D148C;
 }
 
-h1 {
-  text-align: center;
-  color: #4d148c;
+.group {
+  margin-bottom: 20px;
 }
 
-h2 {
-  color: #ff6600;
-}
-
-input {
-  width: 70%;
-  padding: 10px;
-  margin-top: 5px;
+.input-row {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
-  border: 1px solid #aaa;
 }
 
-button {
-  padding: 10px 20px;
-  margin-left: 10px;
-  background-color: #4d148c;
+.input-row input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.input-row button {
+  padding: 8px;
+  background-color: #4D148C;
   color: white;
   border: none;
   cursor: pointer;
 }
 
-ul {
-  list-style-type: decimal;
-  padding-left: 20px;
+.input-row button:hover {
+  background-color: #2e0b58;
 }
