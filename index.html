@@ -1,44 +1,70 @@
+<!-- Paste this into index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Equipment Audit</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="manifest" href="manifest.json" />
-  <script src="https://unpkg.com/@zxing/library@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Equipment Audit</title>
 </head>
 <body>
   <div class="container">
-    <img src="fedex-logo.png" alt="FedEx Logo" class="logo">
+    <img src="fedex-logo.png" class="logo" alt="FedEx Logo" />
     <h1>Outbound Equipment Audit</h1>
 
-    <form id="audit-form">
-      <section>
-        <h2>Radios</h2>
-        <div class="group" id="radio-group"></div>
-      </section>
+    <div class="section">
+      <label>Radio Serial Number</label>
+      <div class="input-group">
+        <input type="text" id="radioInput" maxlength="12" placeholder="Enter Radio Serial Number" />
+        <button onclick="scanCode('radioInput')">Scan</button>
+        <button onclick="addEntry('radio')">Add</button>
+      </div>
+      <ul id="radioList"></ul>
+    </div>
 
-      <section>
-        <h2>Panasonics</h2>
-        <div class="group" id="panasonic-group"></div>
-      </section>
+    <div class="section">
+      <label>Panasonic Serial Number</label>
+      <div class="input-group">
+        <input type="text" id="panasonicInput" maxlength="12" placeholder="Enter Panasonic Serial Number" />
+        <button onclick="scanCode('panasonicInput')">Scan</button>
+        <button onclick="addEntry('panasonic')">Add</button>
+      </div>
+      <ul id="panasonicList"></ul>
+    </div>
 
-      <section>
-        <h2>Zebra Scanners</h2>
-        <div class="group" id="zebra-group"></div>
-      </section>
+    <div class="section">
+      <label>Zebra Scanner Serial Number</label>
+      <div class="input-group">
+        <input type="text" id="zebraInput" maxlength="12" placeholder="Enter Zebra Serial Number" />
+        <button onclick="scanCode('zebraInput')">Scan</button>
+        <button onclick="addEntry('zebra')">Add</button>
+      </div>
+      <ul id="zebraList"></ul>
+    </div>
 
-      <section>
-        <h2>Finger Scanners</h2>
-        <div class="group" id="finger-group"></div>
-      </section>
+    <div class="section">
+      <label>Finger Scanner Serial Number</label>
+      <div class="input-group">
+        <input type="text" id="fingerInput" maxlength="12" placeholder="Enter Finger Serial Number" />
+        <button onclick="scanCode('fingerInput')">Scan</button>
+        <button onclick="addEntry('finger')">Add</button>
+      </div>
+      <ul id="fingerList"></ul>
+    </div>
 
-      <button type="button" onclick="exportPDF()">Download PDF</button>
-    </form>
+    <div class="section">
+      <label>Radio Batteries On Hand</label>
+      <div class="input-group">
+        <input type="number" id="batteryCount" maxlength="2" placeholder="Enter Battery Count" />
+        <button onclick="saveBatteryCount()">Add</button>
+      </div>
+      <p id="batteryDisplay"></p>
+    </div>
+
+    <button onclick="exportPDF()">Export PDF</button>
   </div>
 
-  <video id="scanner-preview" style="display:none;"></video>
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
