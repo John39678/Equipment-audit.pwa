@@ -1,72 +1,57 @@
-document.addEventListener('DOMContentLoaded', function () {
-  let activeInput = null;
+const categories = ['radio', 'panasonic', 'zebra', 'finger'];
 
-  // Attach scanner button listeners
-  document.querySelectorAll('.scan-btn').forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      const input = btn.previousElementSibling;
-      activeInput = input;
-      startScanner();
+window.onload = () => {
+  categories.forEach(cat => {
+    loadList(cat);
+    const input = document.getElementById(`${cat}Input`);
+    input.addEventListener("keypress", e => {
+      if (e.key === "Enter") addSerial(cat);
     });
   });
+};
 
-  // Close scanner button
-  document.getElementById('close-scanner').addEventListener('click', stopScanner);
+function addSerial(category) {
+  const input = document.getElementById(`${category}Input`);
+  const value = input.value.trim();
+  if (value === "") return;
 
-  // Export button to trigger browser print (for PDF)
-  document.getElementById('exportBtn').addEventListener('click', function () {
-    const formContent = document.getElementById('auditForm').innerHTML;
-    const win = window.open('', '', 'width=800,height=900');
-    win.document.write('<html><head><title>PDF Export</title></head><body>');
-    win.document.write(formContent);
-    win.document.write('</body></html>');
-    win.document.close();
-    win.print();
+  let data = JSON.parse(localStorage.getItem(category)) || [];
+  data.push(value);
+  localStorage.setItem(category, JSON.stringify(data));
+  input.value = "";
+  loadList(category);
+}
+
+function loadList(category) {
+  const list = document.getElementById(`${category}List`);
+  list.innerHTML = "";
+  const data = JSON.parse(localStorage.getItem(category)) || [];
+  data.forEach((serial, i) => {
+    const li = document.createElement("li");
+    li.textContent = serial;
+    list.appendChild(li);
   });
+}
 
-  // Start barcode scanner
-  function startScanner() {
-    document.getElementById('scanner-container').style.display = 'flex';
-
-    Quagga.init({
-      inputStream: {
-        name: "Live",
-        type: "LiveStream",
-        target: document.querySelector('#scanner')
-      },
-      decoder: {
-        readers: ["code_128_reader", "ean_reader", "upc_reader"]
-      }
-    }, function (err) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      Quagga.start();
-    });
-
-    Quagga.onDetected(function (result) {
-      if (activeInput) {
-        activeInput.value = result.codeResult.code;
-      }
-      stopScanner();
-    });
-  }
-
-  // Stop barcode scanner
-  function stopScanner() {
-    Quagga.stop();
-    document.getElementById('scanner-container').style.display = 'none';
-  }
-
-  // Save form data locally
-  const form = document.getElementById('auditForm');
-  const fields = form.querySelectorAll('input');
-  fields.forEach((field, i) => {
-    const key = 'field-' + i;
-    field.value = localStorage.getItem(key) || '';
-    field.addEventListener('input', () => {
-      localStorage.setItem(key, field.value);
-    });
+function clearAll() {
+  categories.forEach(cat => {
+    localStorage.removeItem(cat);
+    loadList(cat);
   });
-});
+}
+
+function exportPDF() {
+  const win = window.open('', '', 'width=800,height=900');
+  win.document.write('<html><head><title>Audit PDF</title></head><body>');
+  win.document.write('<h1>Outbound Equipment Audit</h1>');
+  categories.forEach(cat => {
+    const title = cat.charAt(0).toUpperCase() + cat.slice(1) + 's';
+    const data = JSON.parse(localStorage.getItem(cat)) || [];
+    win.document.write(`<h2>${title}</h2><ol>`);
+    data.forEach(s => win.document.write(`<li>${s}</li>`));
+    win.document.write('</ol>');
+  });
+  win.document.write('</body></html>');
+  win.document.close();
+  win.print();
+}
