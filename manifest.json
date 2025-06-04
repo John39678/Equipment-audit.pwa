@@ -1,6 +1,5 @@
-// Paste this into manifest.json
 {
-  "name": "FedEx Equipment Audit",
+  "name": "FedEx Outbound Equipment Audit",
   "short_name": "AuditApp",
   "start_url": "./index.html",
   "display": "standalone",
