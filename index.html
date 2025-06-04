@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipment Audit</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <script src="https://unpkg.com/@zxing/library@latest"></script>
+</head>
+<body>
+  <div class="container">
+    <img src="fedex-logo.png" alt="FedEx Logo" class="logo">
+    <h1>Outbound Equipment Audit</h1>
 
+    <form id="audit-form">
+      <section>
+        <h2>Radios</h2>
+        <div class="group" id="radio-group"></div>
+      </section>
+
+      <section>
+        <h2>Panasonics</h2>
+        <div class="group" id="panasonic-group"></div>
+      </section>
+
+      <section>
+        <h2>Zebra Scanners</h2>
+        <div class="group" id="zebra-group"></div>
+      </section>
+
+      <section>
+        <h2>Finger Scanners</h2>
+        <div class="group" id="finger-group"></div>
+      </section>
+
+      <button type="button" onclick="exportPDF()">Download PDF</button>
+    </form>
+  </div>
+
+  <video id="scanner-preview" style="display:none;"></video>
+  <script src="script.js"></script>
+</body>
+</html>
