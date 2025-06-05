@@ -1,7 +1,7 @@
 {
-  "name": "FedEx Equipment Audit",
-  "short_name": "Audit",
-  "start_url": "./index.html",
+  "name": "Outbound Equipment Audit",
+  "short_name": "EquipmentAudit",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4d148c",
@@ -9,6 +9,11 @@
     {
       "src": "fedex-logo.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "fedex-logo.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
