@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background: #ffffff;
+  background: #ffffff url('fedex-logo.png') no-repeat center center fixed;
+  background-size: 150px 150px;
   margin: 0;
   padding: 0;
   color: #000;
@@ -8,8 +9,11 @@ body {
 
 .container {
   padding: 20px;
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(77, 20, 140, 0.7);
 }
 
 .logo {
@@ -33,12 +37,14 @@ h2 {
   color: #ff6600;
 }
 
-input {
-  width: 70%;
+input[type="text"], input[type="number"] {
+  width: 60%;
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 10px;
   border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 button {
@@ -48,23 +54,25 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #6f21bf;
 }
 
 ul {
   list-style-type: decimal;
   padding-left: 20px;
+  max-height: 120px;
+  overflow-y: auto;
 }
 
-#scanner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000000c0;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+#scannerContainer {
+  margin-top: 20px;
+  border: 2px solid #4d148c;
+  border-radius: 8px;
+  padding: 10px;
 }
