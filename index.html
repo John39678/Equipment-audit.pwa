@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Outbound Equipment Audit</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -16,7 +17,7 @@
       <h2>Radios</h2>
       <input type="text" id="radioInput" placeholder="Enter Radio Serial" />
       <button onclick="addSerial('radio')">Add</button>
-      <button onclick="startScanner('radioInput')">Scan</button>
+      <button onclick="startScanner('radio')">Scan</button>
       <ul id="radioList"></ul>
     </div>
 
@@ -24,7 +25,7 @@
       <h2>Panasonic Scanners</h2>
       <input type="text" id="panasonicInput" placeholder="Enter Panasonic Serial" />
       <button onclick="addSerial('panasonic')">Add</button>
-      <button onclick="startScanner('panasonicInput')">Scan</button>
+      <button onclick="startScanner('panasonic')">Scan</button>
       <ul id="panasonicList"></ul>
     </div>
 
@@ -32,7 +33,7 @@
       <h2>Zebra Scanners</h2>
       <input type="text" id="zebraInput" placeholder="Enter Zebra Serial" />
       <button onclick="addSerial('zebra')">Add</button>
-      <button onclick="startScanner('zebraInput')">Scan</button>
+      <button onclick="startScanner('zebra')">Scan</button>
       <ul id="zebraList"></ul>
     </div>
 
@@ -40,15 +41,15 @@
       <h2>Finger Scanners</h2>
       <input type="text" id="fingerInput" placeholder="Enter Finger Serial" />
       <button onclick="addSerial('finger')">Add</button>
-      <button onclick="startScanner('fingerInput')">Scan</button>
+      <button onclick="startScanner('finger')">Scan</button>
       <ul id="fingerList"></ul>
     </div>
 
-    <div class="section" id="honeywells">
+    <div class="section" id="honeywell">
       <h2>Honeywell Printers</h2>
-      <input type="text" id="honeywellInput" placeholder="Enter Honeywell Serial" />
+      <input type="text" id="honeywellInput" placeholder="Enter Honeywell Printer Serial" />
       <button onclick="addSerial('honeywell')">Add</button>
-      <button onclick="startScanner('honeywellInput')">Scan</button>
+      <button onclick="startScanner('honeywell')">Scan</button>
       <ul id="honeywellList"></ul>
     </div>
 
@@ -56,7 +57,7 @@
       <h2>Express Scanners</h2>
       <input type="text" id="expressScannerInput" placeholder="Enter Express Scanner Serial" />
       <button onclick="addSerial('expressScanner')">Add</button>
-      <button onclick="startScanner('expressScannerInput')">Scan</button>
+      <button onclick="startScanner('expressScanner')">Scan</button>
       <ul id="expressScannerList"></ul>
     </div>
 
@@ -64,27 +65,26 @@
       <h2>Express Finger Scanners</h2>
       <input type="text" id="expressFingerInput" placeholder="Enter Express Finger Serial" />
       <button onclick="addSerial('expressFinger')">Add</button>
-      <button onclick="startScanner('expressFingerInput')">Scan</button>
+      <button onclick="startScanner('expressFinger')">Scan</button>
       <ul id="expressFingerList"></ul>
     </div>
 
-    <div class="section" id="batteryCount">
+    <div class="section" id="radioBatteries">
       <h2>Radio Batteries On Hand</h2>
-      <input type="text" id="batteryInput" maxlength="2" placeholder="Enter Number (00–99)" />
-      <button onclick="saveBatteries()">Add</button>
-      <p id="batteryDisplay"></p>
+      <input type="number" id="radioBatteriesInput" placeholder="Enter number (0-99)" min="0" max="99" maxlength="2" />
+      <button onclick="addBatteryCount()">Add</button>
+      <div id="radioBatteriesDisplay"></div>
+    </div>
+
+    <div id="scannerContainer" style="display:none;">
+      <h2>Scanning... <button onclick="stopScanner()">Stop</button></h2>
+      <div id="scannerPreview" style="width:100%; height:300px;"></div>
     </div>
 
     <button onclick="exportPDF()">Export to PDF</button>
     <button onclick="clearAll()">Clear All</button>
   </div>
 
-  <div id="scanner" style="display:none">
-    <video id="scanner-preview" width="100%" autoplay></video>
-    <button onclick="stopScanner()">Close Scanner</button>
-  </div>
-
-  <script src="https://unpkg.com/@zxing/library@latest"></script>
   <script src="app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
