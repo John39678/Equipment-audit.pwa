@@ -1,1 +1,89 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outbound Equipment Audit</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="fedex-logo.png" alt="FedEx Logo" class="logo" />
+    <h1>Outbound Equipment Audit</h1>
+
+    <div class="section" id="radios">
+      <h2>Radios</h2>
+      <input type="text" id="radioInput" placeholder="Enter Radio Serial" />
+      <button onclick="startScan('radio')">Scan</button>
+      <button onclick="addSerial('radio')">Add</button>
+      <ul id="radioList"></ul>
+    </div>
+
+    <div class="section" id="panasonics">
+      <h2>Panasonic Scanners</h2>
+      <input type="text" id="panasonicInput" placeholder="Enter Panasonic Serial" />
+      <button onclick="startScan('panasonic')">Scan</button>
+      <button onclick="addSerial('panasonic')">Add</button>
+      <ul id="panasonicList"></ul>
+    </div>
+
+    <div class="section" id="zebras">
+      <h2>Zebra Scanners</h2>
+      <input type="text" id="zebraInput" placeholder="Enter Zebra Serial" />
+      <button onclick="startScan('zebra')">Scan</button>
+      <button onclick="addSerial('zebra')">Add</button>
+      <ul id="zebraList"></ul>
+    </div>
+
+    <div class="section" id="fingers">
+      <h2>Finger Scanners</h2>
+      <input type="text" id="fingerInput" placeholder="Enter Finger Serial" />
+      <button onclick="startScan('finger')">Scan</button>
+      <button onclick="addSerial('finger')">Add</button>
+      <ul id="fingerList"></ul>
+    </div>
+
+    <div class="section" id="honeywells">
+      <h2>Honeywell Printers</h2>
+      <input type="text" id="honeywellInput" placeholder="Enter Honeywell Serial" />
+      <button onclick="startScan('honeywell')">Scan</button>
+      <button onclick="addSerial('honeywell')">Add</button>
+      <ul id="honeywellList"></ul>
+    </div>
+
+    <div class="section" id="expressScanners">
+      <h2>Express Scanners</h2>
+      <input type="text" id="expressScannerInput" placeholder="Enter Express Scanner Serial" />
+      <button onclick="startScan('expressScanner')">Scan</button>
+      <button onclick="addSerial('expressScanner')">Add</button>
+      <ul id="expressScannerList"></ul>
+    </div>
+
+    <div class="section" id="expressFingers">
+      <h2>Express Finger Scanners</h2>
+      <input type="text" id="expressFingerInput" placeholder="Enter Express Finger Scanner Serial" />
+      <button onclick="startScan('expressFinger')">Scan</button>
+      <button onclick="addSerial('expressFinger')">Add</button>
+      <ul id="expressFingerList"></ul>
+    </div>
+
+    <div class="section" id="radioBatteries">
+      <h2>Radio Batteries On Hand</h2>
+      <input type="number" id="batteryInput" placeholder="Enter Count (2 digits max)" maxlength="2" />
+      <button onclick="addBattery()">Add</button>
+      <ul id="batteryList"></ul>
+    </div>
+
+    <button onclick="exportPDF()">Export to PDF</button>
+    <button onclick="clearAll()">Clear All</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
