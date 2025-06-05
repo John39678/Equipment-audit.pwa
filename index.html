@@ -6,6 +6,8 @@
   <title>Outbound Equipment Audit</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
+  <!-- Include html5-qrcode library -->
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -53,6 +55,14 @@
 
     <button onclick="exportPDF()">Export to PDF</button>
     <button onclick="clearAll()">Clear All</button>
+  </div>
+
+  <!-- Scanner Modal -->
+  <div id="scannerModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeScanner()">&times;</span>
+      <div id="reader" style="width: 100%;"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>
