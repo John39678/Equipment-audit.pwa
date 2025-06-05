@@ -8,7 +8,6 @@ window.onload = () => {
       if (e.key === "Enter") addSerial(cat);
     });
   });
-
   loadBattery();
 };
 
@@ -78,4 +77,52 @@ function exportPDF() {
   win.document.write('</body></html>');
   win.document.close();
   win.print();
+}
+
+// Camera Scan Button Logic
+function scanBarcode(inputId) {
+  if (!("BarcodeDetector" in window)) {
+    alert("Barcode scanning is not supported on this device.");
+    return;
+  }
+
+  const barcodeDetector = new BarcodeDetector({ formats: ["code_128", "ean_13", "qr_code"] });
+
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+    .then(stream => {
+      const video = document.createElement("video");
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true);
+      video.play();
+
+      const overlay = document.createElement("div");
+      overlay.style.position = "fixed";
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = "100vw";
+      overlay.style.height = "100vh";
+      overlay.style.background = "rgba(0,0,0,0.8)";
+      overlay.style.zIndex = 9999;
+      overlay.appendChild(video);
+      document.body.appendChild(overlay);
+
+      const scan = () => {
+        barcodeDetector.detect(video).then(barcodes => {
+          if (barcodes.length > 0) {
+            const code = barcodes[0].rawValue;
+            document.getElementById(inputId).value = code;
+            stream.getTracks().forEach(track => track.stop());
+            document.body.removeChild(overlay);
+          } else {
+            requestAnimationFrame(scan);
+          }
+        }).catch(console.error);
+      };
+
+      scan();
+    })
+    .catch(err => {
+      alert("Camera access denied or not available.");
+      console.error(err);
+    });
 }
